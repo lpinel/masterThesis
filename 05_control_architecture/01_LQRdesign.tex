@@ -126,7 +126,7 @@ z
 - K_u u_D
 \end{equation}
 
-Figure \ref shows simulation results with the designed LQR control system with an integrator in the direct control loop. One can see how the output $y$ reaches the step reference of ZMP. Note that the output goes to negative values when the reference suddenly changes its value. This abrupt change makes the output derivative to reach higher values, so it can be solved reducing the abrupt change of the reference signal, i. e., using a ramp signal instead of a step. In Figure \ref{fig:ramp_response} the reference change is smaller and the output is smoother.
+Figure \ref{fig:step_response} shows simulation results with the designed LQR control system with an integrator in the direct control loop. One can see how the output $y$ reaches the step reference of ZMP. Note that the output goes to negative values when the reference suddenly changes its value. This abrupt change makes the output derivative to reach higher values, so it can be solved reducing the abrupt change of the reference signal, i.e., using a ramp signal instead of a step. In Figure \ref{fig:ramp_response} the reference change is smaller and the output is smoother.
 
 \begin{figure}[!hbt]
 \centering
@@ -139,7 +139,7 @@ Figure \ref shows simulation results with the designed LQR control system with a
 \centering
 \includegraphics[scale=0.6]{011_ramp_response.eps}
 \caption{Linear inverted pendulum ramp response.}
-\label{fig:step_response}
+\label{fig:ramp_response}
 \end{figure}
 
 
