@@ -231,7 +231,7 @@ y_{ZMP} = \frac{\tau_x}{mg}
 \label{eq:yzmp}
 \end{equation}
 
-When the ankle joint is displaced from the ground as in Figure \textcolor{red}{FIGURE}, ZMP equations take the form:
+When the ankle joint is displaced from the ground as in Figure \ref{fig:altura}, ZMP equations take the form:
 
 \begin{equation}
 x_{ZMP} = -\frac{\tau_y+hF_x}{mg}
@@ -244,6 +244,13 @@ y_{ZMP} = \frac{\tau_x+hFy}{mg}
 
 where $h$ is the distance between the ground and the measuring point, i.e, the height of the sole. 
 These are the \textit{ZMP equations}, without forgetting it was considered before that lateral accelerations of the COG $\ddot{x}=0$ and $\ddot{y}=0$. One can see that moments $\tau_x$ and $\tau_y$ in $x$ and $y$ directions respectively affect the ZMP position of the mecanism and it can loose balance because of their change.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.3]{alturaZMP.pdf}
+\caption{Model for ZMP computation using F/T sensor measurements}
+\label{fig:altura}
+\end{figure}
 
 If we take into account these lateral accelerations of the COG, the ZMP can be expressed as a function of the acceleration of the COG as: \textcolor{red}{REFERENCIA?}
 \begin{equation}
