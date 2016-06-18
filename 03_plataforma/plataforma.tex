@@ -2,7 +2,7 @@
 \chapter{Platform description} 
 \label{cap:platform_description}
 \section{Humanoid robot TEO}
-Humanoid robot RH-2, also known as TEO (Task Environment Operator), from University Carlos III of Madrid, is and advanced version of humanoid robots RH-0 and RH-1. TEO is 165 cm high overtaking 150 cm of RH-1 and 120 cm of RH-0. It wheights about 60 kg and it can carry about 2 kg of payload. It has 24 DOFs (26 DOFs taking into account head motors), 3 more DOFs than in previous RH versions. In Figure \ref{ref:gdl} one can see the robot DOFs, besides their movements, being 6 DOFs for each leg, 6 DOFs for each arm, 2 DOFs for the torso and 2 DOFs for the head.
+Humanoid robot RH-2, also known as TEO (Task Environment Operator), from University Carlos III of Madrid, is and advanced version of humanoid robots RH-0 and RH-1. TEO is 165 cm high overtaking 150 cm of RH-1 and 120 cm of RH-0. It wheights about 60 kg and it can carry about 2 kg of payload. It has 26 DOFs (28 DOFs taking into account head motors), more DOFs than in previous versions. In Figure \ref{fig:gdl} one can see the robot DOFs, besides their direction of rotaton, being 6 DOFs for each leg, 6 DOFs for each arm, 2 DOFs for the torso and 2 DOFs for the head.
 
 \begin{figure}[!hbt]
 \centering
@@ -15,8 +15,16 @@ The robot has 4 microprocessors: locomotion, manipulation, artificial vision tas
 
 The communication system is based on the CAN-bus protocol. Making a sagittal and transversal division, there are 4 CAN-bus lines: 1 line per each arm and neck, and 1 line per each leg and torso.
 
-For data acquisition, the robot has Force-Torque sensors located at the robot ankles and wrists, used locomotion and manipulation, respectively. These sensors are plugged into real time data acquisition PCI cards. Including F/T sensors is an important difference and advantage respect RH-2 predecessors. They allow to close the control loop and then, to obtain a kind of feedback which is necessary to accomplish tasks successfully.
+For data acquisition, the robot has a inertial sensor located at the trunk and Force-Torque sensors located at the robot ankles and wrists. F-T sensors are plugged into real time data acquisition PCI cards. Including F-T sensors is an important difference and advantage respect RH-2 predecessors. They allow to close the control loop and then, to obtain a kind of feedback which is necessary to accomplish tasks successfully.
 
+The Control level is divided into 2 layers. At joint level, each servo not only closes the servo loop, it also synchronizes with other devices and absolute encoders provide a feedback of joint motors. At task-oriented control level, high level executions are done. This layer is directly connected with the joint level control. Examples of appliance are manipulation of objects or stability control which is the aim of this project. Figure \ref{fig:comms} shows the general communication diagram.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.5]{comms.pdf}
+\label{fig:comms}
+\caption{Basic communications diagram}
+\end{figure}
 
 \section{Force/Torque sensors}
 Force-Torque (F-T) sensors are based on strain gauge sensors arranged in such a way that allows to obtain force and moment measures in all axes of the 3D space. 
@@ -25,7 +33,7 @@ The sensors used in the platform, are the commercial JR3 F-T sensors described i
 
 \begin{table}[!hbt]
 \centering
-\begin{tabular}{|cl|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 Joint & Model & $F_{x,y}$ & $F_z$ & $M_{x,y,z}$\\
 \hline
@@ -42,7 +50,14 @@ According to the manufacturer, the two first digits of the model show the sensor
 
 Serie M sensors include inner electronics in order to filter noise, digital output to use a data acquisition PCI card from the same manufacturer and an analogical output option. The nominal precission of all sensors of serie M is 1\% of full scale, and a 1/4000 full scale resolution.
 
-The sensors used in this work, provide the option of acquiring data in International System Units or Imperial System Units, according to Figure \textcolor{red}{FIGURA}.
+The sensors used in this work, provide the option of acquiring data in International System Units or Imperial System Units, according to Figure \ref{fig:sensor}.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.25]{sensor.pdf}
+\label{fig:sensor}
+\caption{JR3 model 85M35A Force-Torque sensor}
+\end{figure}
 
 \section{Data Acquisition}
 The PCI cards used for data acquisition are PCI 1592D from JR3 Inc, which has 4 ports (named as in Figure ???). The sensors are plugged through a 6 or 8 pinout cables (RJ-11 and RJ-45, respectively). In the case of RJ-45, two pinouts are not used. The PCI card uses these cables to receive high speed data and provide power supply to the sensors. About the PCI supply, it is provided by the PCI slot form the computer where it is installed.

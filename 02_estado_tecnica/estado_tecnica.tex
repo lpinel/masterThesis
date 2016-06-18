@@ -3,13 +3,13 @@
 \input{02_estado_tecnica/00_trends_humanoid_robotics}
 
 \section{Bipedal locomotion}
-The performance of the artificial bipedal locomotion is a complex problem and human beings have the ideal bipedal locomotion. Therefore the best way to produce such a type of motion for a walking machine is to copy human motion.
+Artificial bipedal locomotion is a complex task and humans have the ideal locomotion. Therefore the best way to reproduce a type of motion for a walking machine is to copy human motion.
 
-Human walking is an automated motion, carried out even uncounciously. This locomotion process is a repetitive execution until some perturbations are detected. In humans, the muscular system modifies forces acting during the walking in order to maintain equilibrium. The study of the human wakling and the muscles involved in, brings very complex relationships and it requires some simplifications in anthropomorphic legged mechanisms in order to reduce complexity form the mechanical and control points of view.
+Human walking is an automated motion, carried out even uncounciously. This locomotion process is a repetitive execution until some perturbations are detected. In humans, the muscular system modifies forces acting during the walk in order to maintain balance. The study of human wakling and the muscles involved in, brings very complex relationships and it requires some simplifications in anthropomorphic legged mechanisms in order to reduce complexity form the mechanical and control points of view.
 
 The analysis of the human walking is fairly recent. McGeer \cite{McGeer1990} built a passive walker in 1990 and showed that his two-legged walker could reproduce stable gait without any controls. However, the most progress was revealed in the active bipedal locomotion \cite{Hirai1998}, \cite{Kaneko2004}, \cite{Park2007}. This type of locomotion is developed and implemented as artificial human-like bipedal motion based on the previous planning of each step and the real-time automatic control of its execution. 
 
-As locomotion is a complex task, generally the study of the human body is based in three basic planes: sagital, transversal and frontal (Figure \ref{fig:axes}). It is important to mention that the most important motions related to locomotion occur in the sagital plane because it coincides with the main walking direction. However, the combination of joints of sagital and frontal planes, give the stabilization of the locomotion cycle.
+Generally, the study of the human body is based in three basic planes: sagittal, transversal and frontal (Figure \ref{fig:axes}). It is important to mention that the most important motions related to locomotion occur in the sagittal plane because it coincides with the main walking direction. However, the combination of joints of sagittal and frontal planes, give the stability of the locomotion cycle.
 
 \begin{figure}[!h]
 \centering
@@ -18,11 +18,11 @@ As locomotion is a complex task, generally the study of the human body is based 
 \label{fig:axes}
 \end{figure}
 
-The basic characteristic of bipedal locomotion is the permanent change of the situation when the mechanism is supported by one foot (single support phase) and when both feet are in contact with the ground (double support phase). The second situation is statically stable and there are no additional moments affecting the robot. In terms of balance, the first situation is statically unstable because when one foot is on the ground, the other is transferred from the back to the front position producing lateral accelerations affecting the mechanism and all the weight remains in only one support foot. Thus, the locomotion mechanism changes its structure during a single walking cycle from an open to a closed kinematics chain. Each of these two cases present different dynamical situations and should be taken into account in artificial gait synthesis and control.
+The basic characteristic of bipedal locomotion is the permanent change of the situation when the mechanism is supported by one foot (single support phase) and when both feet are in contact with the ground (double support phase). The second situation is statically stable and there are no additional moments affecting the robot. In terms of balance, the first situation is statically unstable because when one foot is on the ground, the other is transferred from the back to the front position producing lateral accelerations affecting the mechanism and all the weight remains in only one support foot. Each of these two cases present different dynamical situations and should be taken into account in artificial gait synthesis and control.
 
-Robot walking, as humans, is performed in a three phase cycle (Figure \ref{fig:caminata}). The cycle is divided in two, left and right steps. At the begining, the humanoid is in a stable position with both feet on the ground (Figure \ref{fig:caminata} (a)) and all the body weight is transferred form one foot to the other. Then the step generation starts when the right foot leaves the ground in the swinging phase (Figure \ref{fig:caminata} (b), (c) and (d)). After the right foot touches the ground, the next (right) step with the same basic phases is started, and the whole cycle ends (Figure \ref{fig:caminata} (e)).
+Robot walking, as humans, is performed in a three phase cycle (Figure \ref{fig:caminata}). The cycle is divided in two, left and right steps. At the begining, the human is in a stable position with both feet on the ground (Figure \ref{fig:caminata} (a)) and all the body weight is transferred form one foot to the other. Then the step generation starts when the right foot leaves the ground in the swinging phase (Figure \ref{fig:caminata} (b) - (d)). After the right foot touches the ground (Figure \ref{fig:caminata} (e)), the next (left) step with the same basic phases is started, and the whole cycle ends.
 
-Swinging phase has also three sub-phases: acceleration, swinging and deceleration (Figure \ref{fig:caminata} (b), (c) y (d), respectively). The acceleration phase takes its name due to the acceleration of the lifting leg that stops being supported in the ground and gives the impulse to the step. Once the support leg is overtaken, the lifting leg starts the swinging pahse in order to reach the ground with its consequent deceleration.
+Swinging phase has also three sub-phases: acceleration, swinging and deceleration (Figure \ref{fig:caminata} (b), (c) and (d), respectively). The acceleration phase takes its name due to the acceleration of the lifting leg that stops being supported in the ground and gives the impulse to the step. Once the support leg is overtaken, the lifting leg starts the swinging pahse in order to reach the ground with its consequent deceleration.
 
 \begin{figure}[!hbt]
 \centering
@@ -64,11 +64,11 @@ From the concept of the CoP, appears a new term known as \textit{Zero-Moment Poi
 
 Vukobratović \cite{Vuk2007} explains the difference between the CoP and ZMP: CoP and ZMP coincide only when both are inside the support area. When the ZMP goes to the edge of the support area, the humanoid body looses balance and it will fall down. In that case, the ZMP has no sense existing even the CoP.
 
-Goswami presented that, mathematically was possible that the point could be outside of the support area and continue satisfying the equilibrium conditions \cite{Gos}. This point, called \textit{Foot Rotation Indicator (FRI)}, is defined as the point on the contact area between the ground and the foot, inside or outside the suppor area, where the resultant moment of the forces and torques applied on the foot are normal to the surface. Forces and torques applied mean the forces and torques at the ankle joint, and also other external forces, the foot wheight and reaction forces between the foot and the ground. 
+Goswami presented that, mathematically, was possible that the point could be outside of the support area and continue satisfying the equilibrium conditions \cite{Gos}. This point, called \textit{Foot Rotation Indicator (FRI)}, is defined as the point on the contact area between the ground and the foot, inside or outside the suppor area, where the resultant moment of the forces and torques applied on the foot are normal to the surface. Forces and torques applied mean the forces and torques at the ankle joint, and also other external forces, the foot wheight and reaction forces between the foot and the ground. 
 
 However, Vukobratović, held that the ZMP can only exist inside the support area of the robot. When the ZMP comes close to the edge, any force or moment applied to the system, will produce a rotation about the foot edge and the robot will fall down. In this case, the reaction force of the ground will be at the foot edge and, therefore, it can not be considered as ZMP because there is no stability ensured. That is why the author suggests to denote the point as \textit{Fictitious ZMP} o \textit{FZMP}, if it is outside the support area. 
  
-When the robot walking is enough slow to consider almost static, appears the term \textit{pseudo-ZMP}, which is the proyection over the ground of the \textit{Center of Gravity (CoG)} of the system. In such case, lateral accerlerations are so small and can be omitted and the \textit{pseudo-ZMP} = ZMP. Although the \textit{pseudo-ZMP} do not give precise information about the balance of the mecanism, it can be used in order to make a first aproximation in control and design of a humanoid robot.
+When the robot walking is enough slow to consider almost static, appears the term \textit{pseudo-ZMP}, which is the projection over the ground of the \textit{Center of Gravity (CoG)} of the system. In such case, lateral accerlerations are so small and can be omitted and the \textit{pseudo-ZMP} = ZMP. Although the \textit{pseudo-ZMP} do not give precise information about the balance of the mecanism, it can be used in order to make a first aproximation in control and design of a humanoid robot.
 
 
 
@@ -116,7 +116,7 @@ M_z = M_{fr} = -M_A^Z + (\overrightarrow{OA} \times F_A)^Z
 
 In a general case, this moment is different from zero and can be reduced to zero only by the appropriate dynamics of the overall mechanism. However, the projection of ecuation \eqref{eq:momentos} onto the horizontal plane gives:
 \begin{equation}
-(\overrightarrow{OP} \times \overrightarrow{R})^H + \overrightarrow{OG} \times m_sg + (M_A)^H + (\overrightarrow{OA} \times F_A)^H = 0,
+(\overrightarrow{OP} \times \overrightarrow{R})^H + \overrightarrow{OG} \times m_sg + (M_A)^H + (\overrightarrow{OA} \times F_A)^H = 0
 \label{eq:momentos}
 \end{equation}
 This equation is a basis for computing the position of the ground reaction force acting point ($P$) which gives the ZMP position.
@@ -130,7 +130,7 @@ Now, let us consider that the inverted pendulum instead of only one contact poin
 \begin{figure}[!hbt]
 \centering
 \includegraphics[scale=0.2]{3DLIPM.png}
-\caption{3D Linear Inverted Pendulum with a contact polygon. \textcolor{red}{CITA}}
+\caption{3D Linear Inverted Pendulum with a contact polygon \protect\cite{Kaynov2008} }
 \label{fig:3DLIPM}
 \end{figure}
 
@@ -163,7 +163,7 @@ m \overrightarrow{a_G} = \overrightarrow{R} - m\overrightarrow{g}
 \label{eq:newton}
 \end{equation}
 
-where $\overrightarrow{a_G} = [\ddot{x}, \ddot{y}, \ddot{z}]^T$ is the acceleration of the COG. From equation \eqref{eq:newton} it is obtained:
+where $\overrightarrow{a_G} = [\ddot{x}, \ddot{y}, \ddot{z}]^T$ is the acceleration of the CoG. From equation \eqref{eq:newton} it is obtained:
 \begin{equation}
 \overrightarrow{R} = m 
 \begin{pmatrix}
@@ -221,7 +221,7 @@ y_{ZMP} = \frac{\tau_x}{m(\ddot{z}+g)}
 \label{eq:y}
 \end{equation}
 
-If it is supposed that the CoG always remains within the horizontal plain intersecting the $z$ axis in the point $z_c$ (one of the constraints of the 3D-LIPM model), then the vertical component of the COG acceleration $\ddot{z}=0$. Then, finally, equations \eqref{eq:x} and \eqref{eq:y} are:
+If it is supposed that the CoG always remains within the horizontal plain intersecting the $z$ axis in the point $z_c$ (one of the constraints of the 3D-LIPM model), then the vertical component of the CoG acceleration $\ddot{z}=0$. Then, finally, equations \eqref{eq:x} and \eqref{eq:y} are:
 \begin{equation}
 x_{ZMP} = -\frac{\tau_y}{mg}
 \label{eq:xzmp}
@@ -231,7 +231,7 @@ y_{ZMP} = \frac{\tau_x}{mg}
 \label{eq:yzmp}
 \end{equation}
 
-When the ankle joint is displaced from the ground as in Figure \ref{fig:altura}, ZMP equations take the form:
+When the ankle joint is displaced from the ground as in Figure \ref{fig:zmp_altura}, ZMP equations take the form:
 
 \begin{equation}
 x_{ZMP} = -\frac{\tau_y+hF_x}{mg}
@@ -249,10 +249,10 @@ These are the \textit{ZMP equations}, without forgetting it was considered befor
 \centering
 \includegraphics[scale=0.3]{alturaZMP.pdf}
 \caption{Model for ZMP computation using F/T sensor measurements}
-\label{fig:altura}
+\label{fig:zmp_altura}
 \end{figure}
 
-If we take into account these lateral accelerations of the COG, the ZMP can be expressed as a function of the acceleration of the COG as: \textcolor{red}{REFERENCIA?}
+If we take into account these lateral accelerations of the COG, the ZMP can be expressed as a function of the acceleration of the CoG as:
 \begin{equation}
 x_{ZMP}=x_{COG}-\frac{z_c}{g}\ddot{x}_{COG}
 \end{equation}
@@ -284,5 +284,5 @@ In the balanced area (safe region), the control action will not actuate. In the 
 
 
 
-\section{Biped modeling}
-Humanoid robots have a very complex dynamics because of their complex mechanical configuration and they require a high computational cost. Figure ??? represents a simplified mechanical configuration of a typical humanoid robot. As one can see, the high number of DOFs due to the precise knowledge of robot dynamics including, mass, location of the centre of mass and moments of inertia of each link, make stable biped locomotion very complex. Thus, different simplified models of the mechanics have been developed. These methods use limited knowledge of the dynamics and the humanoid is usually represented by a planar inverted pendulum with the base representing the ankle joint and, in case of 3D locomotion, the Three-Dimensional Inverted Pendulum Mode (3D-LIPM) \cite{Kaj2001}.
+%\section{Biped modeling}
+%Humanoid robots have a very complex dynamics because of their complex mechanical configuration and they require a high computational cost. Figure ??? represents a simplified mechanical configuration of a typical humanoid robot. As one can see, the high number of DOFs due to the precise knowledge of robot dynamics including, mass, location of the centre of mass and moments of inertia of each link, make stable biped locomotion very complex. Thus, different simplified models of the mechanics have been developed. These methods use limited knowledge of the dynamics and the humanoid is usually represented by a planar inverted pendulum with the base representing the ankle joint and, in case of 3D locomotion, the Three-Dimensional Inverted Pendulum Mode (3D-LIPM) \cite{Kaj2001}.
