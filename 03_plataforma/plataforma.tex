@@ -22,8 +22,8 @@ The Control level is divided into 2 layers. At joint level, each servo not only 
 \begin{figure}[!hbt]
 \centering
 \includegraphics[scale=0.5]{comms.pdf}
-\label{fig:comms}
 \caption{Basic communications diagram}
+\label{fig:comms}
 \end{figure}
 
 \section{Force/Torque sensors}
@@ -55,20 +55,40 @@ The sensors used in this work, provide the option of acquiring data in Internati
 \begin{figure}[!hbt]
 \centering
 \includegraphics[scale=0.25]{sensor.pdf}
-\label{fig:sensor}
 \caption{JR3 model 85M35A Force-Torque sensor}
+\label{fig:sensor}
 \end{figure}
 
 \section{Data Acquisition}
-The PCI cards used for data acquisition are PCI 1592D from JR3 Inc, which has 4 ports (named as in Figure ???). The sensors are plugged through a 6 or 8 pinout cables (RJ-11 and RJ-45, respectively). In the case of RJ-45, two pinouts are not used. The PCI card uses these cables to receive high speed data and provide power supply to the sensors. About the PCI supply, it is provided by the PCI slot form the computer where it is installed.
+The PCI cards used for data acquisition are PCI 1592D from JR3 Inc, which has 4 ports (named as in Figure \ref{fig:daq}). The sensors are plugged through a 6 or 8 pinout cables (RJ-11 and RJ-45, respectively). In the case of RJ-45, two pinouts are not used. The PCI card uses these cables to receive high speed data and provide power supply to the sensors. About the PCI supply, it is provided by the PCI slot form the computer where it is installed.
 
-In order to access to received data from the sensors, it is necessary to access to card memory, specifying the memory address for each available data. These addresses can be found at [ANEXO. DATOS DEL FABRICANTE].
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.4]{daq.pdf}
+\caption{JR3 data acquisition card}
+\label{fig:daq}
+\end{figure}
+
+In order to access to received data from the sensors, it is necessary to access to card memory, specifying the memory address for each available data. These addresses can be found at Appendix \ref{app:jr3card}.
 
 It is important to take into account that the forces and torques obtained from the sensors and processed by the card, are in the International System Units. Forces are given in Newton [N] and torques are given in tenths of a newton per meter [dN·m].
 
 \subsection{Acquisition program}
-The data acquisition of forces and moments form the sensors is done by user programs by means of the data aquisition card. 
+The \textit{jr3pci4channelYarp} program reads data from the 4 F-T sensors of the robot. Data read form de Data Acquisition Card is scaled to SI units, clustered to a YARP Bottle object and sent through YARP ports. Figure \ref{fig:daqprogram} summarizes the data acquisition procedure.
 
-The \textit{jr3pci2channelYarp} program (See ANEXOS) reads data from 2 Force/Torque Sensors with a rate of $40 \mu s$.
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.5]{daqprogram.pdf}
+\caption{Data acquisition diagram}
+\label{fig:daqprogram}
+\end{figure}
 
-The sequence of the program is the following: reads data from sensors, scales the data to SI units, clusters the data into a YARP Bottle object and sends it through YARP ports.
+\textcolor{red}{Captura reading with lib ncurses}
+
+Program cycle time is about $20 \mu s$ for each sensor, thus four sensors reading cycle time is about $80 \mu s$. The problem comes when the data is sent trough YARP ports and there is a client receiving and processing this data. Then the update rate hugely decreases to $10 - 50 ms$, deppending on the reader processing cycle. That occurs because the arrival of updates is delayed until the client completes processing and no updates will ever be lost on the client side \cite{Yarp2006}.
+%the default YARP behaviour is to send data when the client is free. That means that data is received before any processing is donw by the client. If updates arrive faster than processing occurs, then updates will be lost from time to time, but the most recen update received will always be available to the client inmediately when processing is completed.
+
+Using these Force-Torque measurements from the sensors located at the ankles of the robot, the ZMP values are obtained using equations \eqref{eq:xzmp} and \eqref{eq:yzmp}, where the distance between the ground and the sensor center is 194 milimeters (sensor height is obtained from Appendix \ref{app:sensorDraw}.
+
+For a better visual observation of the ZMP data, it has been developed a Python User Interfase using the module \textit{Matplotlib} to represent the ZMP in the ground X-Y plane with the sole borders in both single and double support. \textcolor{red}{The ZMP stability areas are also represented according to the limits obtained later in section X} as shown in Figure \textcolor{red}{FIGURA: dos imagenes de single y double support con las areas pintadas.}

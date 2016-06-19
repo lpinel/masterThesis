@@ -20,6 +20,7 @@
 \usepackage{url}
 \usepackage{apacite}
 \usepackage[nottoc,notlof,notlot]{tocbibind}%was commented out.
+\usepackage[titletoc]{appendix} %include appendix
 \usepackage{palatino} %math font
 %\usepackage[Lenny]{fncychap}
 \usepackage{colortbl}
@@ -114,5 +115,9 @@ This thesis develops ...
 \bibliographystyle{apacite}
 \bibliography{library}
 
+\begin{appendices}
+\graphicspath{{99_appendices/images/}}
+\input{99_appendices/appendices}
+\end{appendices}
 \end{document}
 
