@@ -66,12 +66,14 @@ After the LQR controller was designed, the following parameters were obtained us
 		-1.3060 & 0
 	\end{bmatrix}; & \quad
 D = 0.3257;
+\label{eq:LQRparameters}
 \end{align}
 \begin{equation}
 \mathbf{K} = 
 	\begin{bmatrix}
 		13.5366 & 5.1035
 	\end{bmatrix}
+\label{eq:LQRgain}
 \end{equation}
 
 The block diagram showing the optimal configuration for the single inverted pendulum system is presented in Figure \ref{fig:block_diagram}. The controller maintain desired ($x_{ZMP}$) position , and also $\theta$, of the single inverted pendulum close to zero. Thus, the reference input of the control system in Figure \ref{fig:block_diagram} is zero. A further point of interest for the humanoid robot is to have command tracking so that the real humanoid robot joints could be positioned anywhere and this can be achieved by adding an offset to the desired angle of the ankle joint. 

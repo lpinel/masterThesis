@@ -1,7 +1,38 @@
 \section{Stabilizer}
-The Stabilizer structure explained in section \ref{chap:control_sec:stabilizer} is now implemented in TEO robot throuth the ZMP LQR controller designed in section \ref{chap:control_sec:lqrDesign}. The stabilizer is designed to control the ZMP position through commanding different angulat positions to robot joint ankles.
+In order to prove the applicability of the discussed stabilizer architecture, different experiments were carried out. The aim of this experiments is to show the feasibility of the model-based controller designed in \ref{chap:control_sec:stabilizer}. Only the ankle strategy is considered in this work applied in the sagittal plane when the robot is in double support phase. Humanoid robot TEO from Universidad Carlos III of Madrid is the subject of all experiments.
 
 \subsection{Position control}
+In order to prove the model-based position controller, the model parameters obtained in \eqref{eq:LQRparameters} \eqref{eq:LQRgain} are used. The stabilizer is designed to control the ZMP position through commanding different angular positions to robot joint ankles. 
+
+\textcolor{red}{Incluir diagrama control posicion}
+
+In Figure [], it is shown the control diagram. Here, the predictive model estimates a position of the ZMP point, called as $ZMP_{model}$, from the F-T sensor information ($ZMP_{FT}$) and the desired or reference $ZMP_{ref}$. The estimated ZMP is the control signal sent to the robot ankle joints, but position has to be converted to angular units.
+
+In order to obtain the angular-position units relation we did several experimental trials. Giving to ankle joints angles from 0 to 5 degrees, in 0.5 increment, the measured global ZMP (according to ZMP double-support equation \eqref{eq:xZmpDoubleSupport} and removing sensors offset) has a linear relation with the set angle. Figure \ref{fig:angle_zmp_relation} shows the obtained average relation expressed as:
+
+\begin{equation}
+ZMP_{F-T} = q \cdot \theta_A
+\end{equation}
+
+where $ZMP_{F-T}$ is the measured ZMP, $\theta_A$ is the angle of the ankle joints and $q=-0.0135 \frac{m}{deg}$.
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.5]{angle_zmp_relation3.png}
+\caption{Experimental $\theta_A - ZMP_{F-T}$ relation}
+\label{fig:angle_zmp_relation}
+\end{figure}
+
+The obtained converter factor ought to be useful reverse in order to obtain the required angle to reach a desired ZMP. But experimentally, taking the relation above, the $ZMP_{F-T}$ is different from the setpoint value. Several test were done from 0 to 0.1 m in 0.005 m increments. Results obtained are shown in Figure \ref{fig:ZMPerror}. One can see that 
+
+
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[scale=0.5]{zmp_real_ideal2.png}
+\caption{Measured ZMP error}
+\label{fig:ZMPerror}
+\end{figure}
 
 \subsection{Velocity control}
 
